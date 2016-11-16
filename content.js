@@ -1,1 +1,0 @@
-module.exports = "It still works from content.js";
