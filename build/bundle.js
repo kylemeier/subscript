@@ -46,7 +46,7 @@
 
 	const component = __webpack_require__(1);
 
-	document.body.appendChild( component() );
+	document.body.appendChild(component());
 
 /***/ },
 /* 1 */
