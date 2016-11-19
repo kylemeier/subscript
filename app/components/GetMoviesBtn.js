@@ -1,8 +1,8 @@
-// import React from 'react';
+import React from 'react';
 
-// const GetMoviesBtn = () => (
-// 	<button>
-// 	</button>
-// );
+const GetMoviesBtn = () => (
+	<button>
+	</button>
+);
 
-// export default GetMoviesBtn
+export default GetMoviesBtn

@@ -17,9 +17,13 @@ module.exports = {
 	module: {
 		loaders: [
 	// 		{ test: /\.css$/, loader: "style!css" },
-			{ test: /\.jsx?$/, 
-				loaders: ['babel-loader'],
-				include: PATHS.app
+			{ 
+				test: /\.jsx?$/, 
+				loader: 'babel-loader',
+				include: PATHS.app,
+				query: {
+					presets: ['react', 'es2015']
+				}
 			}
 		]
 	}

@@ -1,3 +1,8 @@
-const component = require('./components/GetMoviesBtn');
+import React from 'react'
+import { render } from 'react-dom'
+import App from './components/App'
 
-document.body.appendChild( component() );
+render(
+	<App />,
+	document.getElementById('root')
+)
