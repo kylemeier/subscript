@@ -21555,7 +21555,9 @@
 	var GetMoviesBtn = function GetMoviesBtn() {
 		return _react2.default.createElement(
 			'button',
-			null,
+			{ onClick: function onClick(e) {
+					console.log(e);
+				} },
 			'asdf'
 		);
 	};
