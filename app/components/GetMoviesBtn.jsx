@@ -4,7 +4,7 @@ const GetMoviesBtn = () => (
 		<button onClick={ e=>{
 			console.log(e);
 		}}>
-			asdf
+			Get Movies
 		</button>
 )
 
