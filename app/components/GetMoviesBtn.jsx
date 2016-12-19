@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import { addMovie } from '../actions/MovieActions';
 
 const GetMoviesBtn = () => (
 		<button onClick={ e=>{
-			console.log(e);
+			
 		}}>
 			Get Movies
 		</button>
