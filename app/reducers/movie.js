@@ -3,7 +3,7 @@ import { ADD_MOVIE } from '../actions/MovieActions';
 
 
 export default function(state = [], action){
-
+	console.log(state, action);
 	switch(action.type){
 
 		case ADD_MOVIE:

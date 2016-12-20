@@ -1,13 +1,17 @@
-import React from 'react';
-import { addMovie } from '../actions/MovieActions';
+import React from 'react'
+import { addMovie } from '../actions/MovieActions'
+import { connect } from 'react-redux'
 
-const GetMoviesBtn = () => (
-		<button onClick={ e=>{
-			
-		}}>
+let GetMoviesBtn = ({dispatch})=>{
+
+	return(
+		<button onClick={e=> dispatch(addMovie('Arrival'))}>
 			Get Movies
 		</button>
-)
+	)
 
+}
+
+GetMoviesBtn = connect()(GetMoviesBtn)
 
 export default GetMoviesBtn
