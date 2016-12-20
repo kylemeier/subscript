@@ -1,9 +1,9 @@
 import React from 'react'
-import GetMoviesBtn from './GetMoviesBtn'
+import FindPersonForm from './FindPersonForm'
 
 const App = () => (
 	<div> 
-		<GetMoviesBtn />
+		<FindPersonForm />
 	</div>
 )
 
