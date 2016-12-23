@@ -3,7 +3,7 @@ import { ADD_MOVIE } from '../actions/MovieActions';
 
 
 export default function(state = [], action){
-	console.log(state, action);
+
 	switch(action.type){
 
 		case ADD_MOVIE:
@@ -11,7 +11,8 @@ export default function(state = [], action){
 				...state,
 				{
 					id: uuid.v4(),
-					title: action.text
+					title: action.text,
+					poster: 'poster.jpg'
 				}
 			]
 		default:

@@ -4,7 +4,6 @@ import { addMovie } from '../actions/MovieActions'
 
 class FindPersonForm extends React.Component{
 
-
 	constructor(props){
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);

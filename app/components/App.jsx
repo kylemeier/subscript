@@ -4,6 +4,7 @@ import FindPersonForm from './FindPersonForm'
 const App = () => (
 	<div> 
 		<FindPersonForm />
+		<MovieList />
 	</div>
 )
 
