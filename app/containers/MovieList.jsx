@@ -1,8 +1,9 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import Movie from '../components/Movie'
 
 let MovieList = ({movies})=>{
+	
 	return(
 		<ul>
 			{movies.map(movie=>
@@ -17,7 +18,7 @@ let MovieList = ({movies})=>{
 
 const mapStateToProps = ({movies})=>{
 	return{
-		movies: movies
+		movies: movies.items
 	}
 }
 

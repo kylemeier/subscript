@@ -1,6 +1,6 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { addMovie } from '../actions/MovieActions'
+import {connect} from 'react-redux'
+import {fetchPeople} from '../actions/fetchPeople'
 
 class FindPersonForm extends React.Component{
 
@@ -12,7 +12,7 @@ class FindPersonForm extends React.Component{
 	handleSubmit(e){
 		e.preventDefault()
 		if(!this.input.value.trim()) return
-		this.props.dispatch(addMovie(this.input.value))
+		this.props.dispatch(fetchPeople(this.input.value))
 		this.input.value = ''
 	}
 	

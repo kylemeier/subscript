@@ -1,6 +1,6 @@
 import uuid from 'node-uuid';
-import { REQUEST_MOVIES } from '../actions/REQUEST_MOVIES';
-import { RECEIVE_MOVIES } from '../actions/RECEIVE_MOVIES';
+import { REQUEST_PEOPLE } from '../actions/REQUEST_PEOPLE';
+import { RECEIVE_PEOPLE } from '../actions/RECEIVE_PEOPLE';
 
 
 export default function(
@@ -9,19 +9,19 @@ export default function(
 		didInvalidate: false,
 		items: []
 	}, action){
-	
+
 	switch(action.type){
 
-		case REQUEST_MOVIES:
+		case REQUEST_PEOPLE:
 			return Object.assign({}, state, {
 				isFetching: true,
 				didInvalidate: false
 			})
-		case RECEIVE_MOVIES:
+		case RECEIVE_PEOPLE:
 			return Object.assign({}, state, {
 				isFetching: false,
 				didInvalidate: false,
-				items: action.movies,
+				items: action.people,
 				lastUpdated: action.receivedAt
 			})
 		default:
