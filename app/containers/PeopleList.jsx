@@ -9,8 +9,10 @@ let PeopleList = ({people})=>{
 			{people.map(person=>
 				<Person
 					key={person.id}
+					id={person.id}
 					name={person.name}
-					profilePath={person.profile_path} />
+					profilePath={person.profile_path} 
+				/>
 			)}
 		</ul>
 	);

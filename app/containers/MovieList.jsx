@@ -10,13 +10,14 @@ let MovieList = ({movies})=>{
 				<Movie
 					key={movie.id}		
 					title={movie.title}
-					poster={movie.poster} />
+					poster={movie.poster_path} />
 			)}
 		</ul>
 	);
 }
 
 const mapStateToProps = ({movies})=>{
+	// console.log(movies);
 	return{
 		movies: movies.items
 	}
