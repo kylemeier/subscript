@@ -1,6 +1,6 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import Movie from '../components/Movie'
+import React from 'react';
+import {connect} from 'react-redux';
+import Movie from '../components/Movie';
 
 let MovieList = ({movies})=>{
 	
@@ -8,7 +8,7 @@ let MovieList = ({movies})=>{
 		<ul>
 			{movies.map(movie=>
 				<Movie
-					key={movie.id}		
+					key={movie.id+movie.character}		
 					title={movie.title}
 					poster={movie.poster_path} />
 			)}
@@ -17,12 +17,11 @@ let MovieList = ({movies})=>{
 }
 
 const mapStateToProps = ({movies})=>{
-	// console.log(movies);
 	return{
 		movies: movies.items
-	}
+	};
 }
 
-MovieList = connect(mapStateToProps)(MovieList)
+MovieList = connect(mapStateToProps)(MovieList);
 
-export default MovieList
+export default MovieList;

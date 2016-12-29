@@ -20,6 +20,9 @@ class Person extends React.Component{
 		return(
 			<button onClick={this.handleClick}>
 				<h1>{name}</h1>
+				{profilePath && 
+					<img src={"https://image.tmdb.org/t/p/w45/"+profilePath} alt="Headshot" />
+				}
 			</button>
 		);
 	}

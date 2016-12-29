@@ -7,11 +7,12 @@ export default function(
 	state = {
 		isFetching: false,
 		didInvalidate: false,
-		items: []
+		items: [],
 	}, action){
 	
+	console.log('movies in reducer', action.movies);
 	switch(action.type){
-
+		
 		case REQUEST_MOVIES:
 			return Object.assign({}, state, {
 				isFetching: true,
@@ -28,4 +29,5 @@ export default function(
 			return state;
 	}
 }
+
 
