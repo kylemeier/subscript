@@ -10,6 +10,8 @@ let MovieList = ({movies})=>{
 				<Movie
 					key={movie.id+movie.character}		
 					title={movie.title}
+					character={movie.character}
+					job={movie.job}
 					poster={movie.poster_path} />
 			)}
 		</ul>

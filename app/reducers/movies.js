@@ -1,6 +1,7 @@
 import uuid from 'node-uuid';
-import { REQUEST_MOVIES } from '../actions/REQUEST_MOVIES';
-import { RECEIVE_MOVIES } from '../actions/RECEIVE_MOVIES';
+import {REQUEST_MOVIES} from '../actions/REQUEST_MOVIES';
+import {RECEIVE_MOVIES} from '../actions/RECEIVE_MOVIES';
+import {REQUEST_PEOPLE} from '../actions/REQUEST_PEOPLE';
 
 
 export default function(
@@ -10,7 +11,7 @@ export default function(
 		items: [],
 	}, action){
 	
-	console.log('movies in reducer', action.movies);
+	
 	switch(action.type){
 		
 		case REQUEST_MOVIES:
@@ -23,6 +24,13 @@ export default function(
 				isFetching: false,
 				didInvalidate: false,
 				items: action.movies,
+				lastUpdated: action.receivedAt
+			})
+		case REQUEST_PEOPLE:
+			return Object.assign({},{
+				isFetching: false,
+				didInvalidate: false,
+				items: [],
 				lastUpdated: action.receivedAt
 			})
 		default:
