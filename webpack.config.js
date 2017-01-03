@@ -12,7 +12,8 @@ module.exports = {
 	},
 	output: {
 		path: PATHS.build,
-		filename: "bundle.js"
+		filename: "bundle.js",
+		publicPath: '/build'
 	},
 	resolve: {
 		extensions: ['', '.js', '.jsx']
