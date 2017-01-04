@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const RECEIVE_MOVIES = 'RECEIVE_MOVIES';
 
 function receiveMovies(query, json){
@@ -17,8 +19,8 @@ function receiveMovies(query, json){
 //look up normalizr and see if i should be using  it here
 function getCurrentlyPlayingMovies({inCast, inCrew}){
 
-	const currentDate = new Date().getTime();
-	const cutoffDate = currentDate - 5259492000; //2 months in ms
+	const currentDate = moment();
+	const cutoffDate = currentDate.clone().subtract(2, 'months');
 
 	return getMoviesReleasedBetween({
 			currentDate, 
@@ -35,8 +37,8 @@ function getCurrentlyPlayingMovies({inCast, inCrew}){
 
 function getMoviesReleasedBetween({currentDate, cutoffDate, movies}){	
 	return movies.filter( movie=>{
-		const releaseDate = new Date(movie.release_date).getTime();
-		return cutoffDate <= releaseDate && releaseDate <= currentDate;
+		const releaseDate = moment(movie.release_date);
+		return cutoffDate.isSameOrBefore(releaseDate) && releaseDate.isSameOrBefore(currentDate);
 	});
 }
 
