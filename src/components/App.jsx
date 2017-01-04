@@ -11,6 +11,6 @@ const App = () => (
 		<h1>Movies:</h1>
 		<MovieList />
 	</div>
-)
+);
 
-export default App
+export default App;

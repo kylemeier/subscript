@@ -1,4 +1,3 @@
-import uuid from 'node-uuid';
 import {REQUEST_MOVIES} from '../actions/REQUEST_MOVIES';
 import {RECEIVE_MOVIES} from '../actions/RECEIVE_MOVIES';
 import {REQUEST_PEOPLE} from '../actions/REQUEST_PEOPLE';

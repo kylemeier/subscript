@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import fetchMovies from '../actions/fetchMovies';
 
 class Person extends React.Component{
 
@@ -10,8 +9,7 @@ class Person extends React.Component{
 	}
 
 	handleClick(e){
-		e.preventDefault();
-		this.props.dispatch(fetchMovies(this.props.id));
+		this.props.handleClick(e, this.props.id);
 	}
 
 	render(){

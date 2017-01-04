@@ -1,4 +1,3 @@
-import uuid from 'node-uuid';
 import { REQUEST_PEOPLE } from '../actions/REQUEST_PEOPLE';
 import { RECEIVE_PEOPLE } from '../actions/RECEIVE_PEOPLE';
 

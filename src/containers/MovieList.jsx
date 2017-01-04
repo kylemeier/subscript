@@ -3,12 +3,12 @@ import {connect} from 'react-redux';
 import Movie from '../components/Movie';
 
 let MovieList = ({movies})=>{
-	
+	console.log(movies);
 	return(
 		<ul>
 			{movies.map(movie=>
 				<Movie
-					key={movie.id+movie.character}		
+					key={movie.id+(movie.character || movie.job)}		
 					title={movie.title}
 					character={movie.character}
 					job={movie.job}
