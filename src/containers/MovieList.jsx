@@ -8,7 +8,7 @@ let MovieList = ({movies})=>{
 		<ul>
 			{movies.map(movie=>
 				<Movie
-					key={movie.id+(movie.character || movie.job)}		
+					key={movie.id}		
 					title={movie.title}
 					character={movie.character}
 					job={movie.job}
