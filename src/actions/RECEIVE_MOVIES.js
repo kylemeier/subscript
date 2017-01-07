@@ -1,4 +1,5 @@
 import moment from 'moment';
+import fp from 'lodash/fp';
 
 const RECEIVE_MOVIES = 'RECEIVE_MOVIES';
 
@@ -7,42 +8,25 @@ function receiveMovies(query, json){
 	return {
 		query,
 		type: RECEIVE_MOVIES,
-		movies: getCurrentlyPlayingMovies({
-			inCast: json.cast,
-			inCrew: json.crew
-		}),
+		movies: getCurrentlyPlayingMovies(json.cast.concat(json.crew)),
 		receivedAt: Date.now()
 	};
 }
 
-function getCurrentlyPlayingMovies({inCast, inCrew}){
+function getCurrentlyPlayingMovies(movies){
+	return combineDuplicates(movies).filter(IsReleasedRecently);
+}
 
+function IsReleasedRecently(movie){
 	const currentDate = moment();
 	const cutoffDate = currentDate.clone().subtract(2, 'months');
-	let movies = inCast.concat(inCrew);
-
-	movies = hasDuplicates(movies)? combineDuplicates(movies) : movies;
-
-	return movies.filter( movie=>{
-		const releaseDate = moment(movie.release_date);
-		return cutoffDate.isSameOrBefore(releaseDate) && releaseDate.isSameOrBefore(currentDate);
-	});
+	const releaseDate = moment(movie.release_date);
+	return cutoffDate.isSameOrBefore(releaseDate) && releaseDate.isSameOrBefore(currentDate);
 }
-
-function hasDuplicates(items){
-
-	const itemIDs = {};
-
-	for (let i = items.length - 1; i >= 0; i--) {
-		const item = items[i];
-		if(itemIDs[item.id]) return true;
-		itemIDs[item.id] = true;
-	}
-	return false;
-}
-
 
 function combineDuplicates(movies){
+	
+	const combineJobAndCharacterPropValues = fp.curry(combinePropValues)(['job', 'character']);
 
 	return movies.reduce( (result, movie)=>{
 
@@ -52,30 +36,28 @@ function combineDuplicates(movies){
 			result.push(movie);
 		}
 		else{
-			result[existingMovieIndex] = combinePropValues({
-				currentObj: result[existingMovieIndex],
-				newObj:  movie,
-				propsToCombine: ['job', 'character']
-			});
+			result[existingMovieIndex] = combineJobAndCharacterPropValues(
+				result[existingMovieIndex],
+				movie,
+			);
 		}
 
 		return result;
 	},[]);
 }
 
-function combinePropValues({currentObj, newObj, propsToCombine}){
-	
+
+function combinePropValues(propsToCombine, currentObj, newObj){
 	const clone = Object.assign({}, currentObj);
-
-	return propsToCombine.reduce( (result, prop) =>{
-
-		const currentValue = result[prop];
-		const newValue = newObj[prop];
-
-		if(newValue) result[prop] = currentValue? currentValue+'/'+newValue : newValue;
-		return result;
-	}, clone);
+	const combineAPropValueWithNewObj = fp.curry(combineAPropValue)(newObj);
+	return propsToCombine.reduce(combineAPropValueWithNewObj, clone);
 }
 
+function combineAPropValue(newObj, result, prop){
+		const currentValue = result[prop];
+		const newValue = newObj[prop];
+		if(newValue) result[prop] = currentValue? currentValue+'/'+newValue : newValue;
+		return result;
+}
 
 export {RECEIVE_MOVIES, receiveMovies};

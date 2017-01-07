@@ -1,10 +1,11 @@
-import React from 'react'
-import FindPersonForm from './FindPersonForm'
-import MovieList from '../containers/MovieList'
-import PeopleList from '../containers/PeopleList'
+import React from 'react';
+import FindPersonForm from './FindPersonForm';
+import MovieList from '../containers/MovieList';
+import PeopleList from '../containers/PeopleList';
+import './App.css';
 
 const App = () => (
-	<div> 
+	<div className="App"> 
 		<FindPersonForm />
 		<h1>People:</h1>
 		<PeopleList />
