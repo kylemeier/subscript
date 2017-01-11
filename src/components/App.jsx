@@ -1,4 +1,6 @@
 import React from 'react';
+import 'normalize.css/normalize.css';
+import '../utils/defaults.css';
 import FindPersonForm from './FindPersonForm';
 import MovieList from '../containers/MovieList';
 import PeopleList from '../containers/PeopleList';

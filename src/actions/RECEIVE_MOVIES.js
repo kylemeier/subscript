@@ -1,5 +1,5 @@
 import moment from 'moment';
-import fp from 'lodash/fp';
+import {curry} from 'lodash/fp';
 
 const RECEIVE_MOVIES = 'RECEIVE_MOVIES';
 
@@ -26,7 +26,7 @@ function IsReleasedRecently(movie){
 
 function combineDuplicates(movies){
 	
-	const combineJobAndCharacterPropValues = fp.curry(combinePropValues)(['job', 'character']);
+	const combineJobAndCharacterPropValues = curry(combinePropValues)(['job', 'character']);
 
 	return movies.reduce( (result, movie)=>{
 
@@ -49,7 +49,7 @@ function combineDuplicates(movies){
 
 function combinePropValues(propsToCombine, currentObj, newObj){
 	const clone = Object.assign({}, currentObj);
-	const combineAPropValueWithNewObj = fp.curry(combineAPropValue)(newObj);
+	const combineAPropValueWithNewObj = curry(combineAPropValue)(newObj);
 	return propsToCombine.reduce(combineAPropValueWithNewObj, clone);
 }
 

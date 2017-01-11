@@ -1,9 +1,29 @@
 .FindPersonForm{
-
+	background: #63474D;
+	margin: 0 auto;
+	position: relative;
+	height: 50px;
 }
 
 .FindPersonForm-input{
 	border-radius: 4px 0 0 4px;
 	border: 0;
 	outline: 0;
+	line-height: 15px;
+	padding: 6px 10px 6px 0;
+	position: relative;
+	margin-left: 4px; 
+	text-indent: 8px;
 }
+
+.FindPersonForm-btn{
+	border-radius: 0 4px 4px 0;
+	background: #F2CC8F;
+	color: #63474D;
+	/*color:#FFF;*/
+}
+
+.FindPersonForm-btn:hover{
+	background: #E3BF86;
+}
+

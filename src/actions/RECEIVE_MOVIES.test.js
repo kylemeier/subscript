@@ -63,7 +63,7 @@ it('returns movies from both cast and crew properties', ()=>{
 	expect(actualResult).toEqual(expectedResult);
 });
 
-fit('combines duplicate movies into a single movie', ()=>{
+it('combines duplicate movies into a single movie', ()=>{
 	
 	const date = moment();
 	const formattedDate = date.format('YYYY-MM-DD');

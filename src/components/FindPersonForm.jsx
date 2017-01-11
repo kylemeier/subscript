@@ -23,8 +23,8 @@ class FindPersonForm extends React.Component{
 			<input className="FindPersonForm-input"
 				ref={ node=>{ this.input = node }}
 			/>
-				<button type="submit">
-					Find
+				<button className="FindPersonForm-btn" type="submit">
+					<i className="material-icons">search</i>
 				</button>
 			</form>
 		);

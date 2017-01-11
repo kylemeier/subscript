@@ -1,9 +1,10 @@
 .App{
-	background: #040403;
+	/*background: #040403;*/
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
 	position:absolute;
-	color: #FFF;
+	color: #373F47;
+	font-family: 'Open Sans', sans-serif;
 }

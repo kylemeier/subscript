@@ -5,7 +5,6 @@ import { createStore, applyMiddleware } from 'redux';
 import App from './components/App';
 import reducers from './reducers/index';
 import thunkMiddleware from 'redux-thunk';
-import 'normalize.css/normalize.css';
 
 let store = createStore(
 	reducers,
