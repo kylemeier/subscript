@@ -1,8 +1,19 @@
 .FindPersonForm{
 	background: #63474D;
-	margin: 0 auto;
 	position: relative;
-	height: 50px;
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.FindPersonForm-title{
+	color:#FFF;
+}
+
+.FindPersonForm-inputContainer{
+	display: flex;
 }
 
 .FindPersonForm-input{
@@ -14,13 +25,21 @@
 	position: relative;
 	margin-left: 4px; 
 	text-indent: 8px;
+	width: 300px;
 }
 
+/*.FindPersonForm-input:focus{
+	outline-width: thin;
+	outline-color: #F2CC8F;
+	outline-offset: -1px;
+	outline-style: solid;
+}
+*/
 .FindPersonForm-btn{
 	border-radius: 0 4px 4px 0;
 	background: #F2CC8F;
 	color: #63474D;
-	/*color:#FFF;*/
+	padding: 0 4px;
 }
 
 .FindPersonForm-btn:hover{
