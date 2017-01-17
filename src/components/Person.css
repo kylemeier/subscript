@@ -1,4 +1,8 @@
 .Person{
-	padding: 0px;
 	margin: 8px;
+	color:#FFF;
+}
+
+.Person-name{
+	font-size: 1em;
 }

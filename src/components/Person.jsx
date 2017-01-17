@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import './Person.css';
+import PersonImage from './PersonImage';
 
 class Person extends React.Component{
 
@@ -15,19 +16,12 @@ class Person extends React.Component{
 
 	render(){
 		const {name,profilePath} = this.props;	
-		let personImage;
 
-		if(profilePath){
-			personImage = <img src={"https://image.tmdb.org/t/p/w185/"+profilePath} alt="Headshot" />;
-		}
-		else{
-			personImage = <i className="material-icons">person</i>;
-		}
 		
 		return(
 			<button className="Person" onClick={this.handleClick}>
-			{personImage}
-			<h1>{name}</h1>
+			{/*<PersonImage imagePath={profilePath} />*/}
+			<h1 className="Person-name">{name}</h1>
 			</button>
 		);
 	}

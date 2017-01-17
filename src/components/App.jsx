@@ -3,15 +3,13 @@ import 'normalize.css/normalize.css';
 import '../utils/defaults.css';
 import FindPersonForm from './FindPersonForm';
 import MovieList from '../containers/MovieList';
-import PeopleList from '../containers/PeopleList';
+import PeopleDropDown from '../containers/PeopleDropDown';
 import './App.css';
 
 const App = () => (
 	<div className="App"> 
 		<FindPersonForm />
-		<h1>People:</h1>
-		<PeopleList />
-		<h1>Movies:</h1>
+		<PeopleDropDown />
 		<MovieList />
 	</div>
 );

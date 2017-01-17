@@ -1,0 +1,3 @@
+export const RECEIVE_PEOPLE = 'RECEIVE_PEOPLE';
+export const REQUEST_PEOPLE = 'REQUEST_PEOPLE';
+export const SELECT_PERSON = 'SELECT_PERSON';

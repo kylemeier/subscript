@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchPeople} from '../actions/fetchPeople';
+import fetchPeople from '../actions/fetchPeople';
+import fetchMovies from '../actions/fetchMovies';
 import './FindPersonForm.css';
 
 class FindPersonForm extends React.Component{
@@ -17,6 +18,13 @@ class FindPersonForm extends React.Component{
 		this.props.dispatch(fetchPeople(this.input.value));
 		//not working
 		this.shouldFocusInput = false;
+	}
+
+	componentWillReceiveProps(nextProps){
+		const nextSelectedPersonID = nextProps.selectedPersonID;
+		const currentSelectedPersonID = this.props.selectedPersonID || null;
+		if(nextSelectedPersonID && nextSelectedPersonID !== currentSelectedPersonID) 
+			this.props.dispatch(fetchMovies(nextSelectedPersonID));
 	}
 	
 	render(){
@@ -37,7 +45,15 @@ class FindPersonForm extends React.Component{
 			</form>
 		);
 	}
-}
+};
 
-export default connect()(FindPersonForm);
+const mapStateToProps = ({people})=>{
+	return{
+		selectedPersonID: people.selectedPersonID,
+		// people: people.items
+	};
+};
+
+
+export default connect(mapStateToProps)(FindPersonForm);
 

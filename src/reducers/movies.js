@@ -1,6 +1,6 @@
 import {REQUEST_MOVIES} from '../actions/REQUEST_MOVIES';
 import {RECEIVE_MOVIES} from '../actions/RECEIVE_MOVIES';
-import {REQUEST_PEOPLE} from '../actions/REQUEST_PEOPLE';
+import {REQUEST_PEOPLE} from '../constants/ACTIONS_PEOPLE';
 
 
 export default function(
@@ -9,7 +9,6 @@ export default function(
 		didInvalidate: false,
 		items: [],
 	}, action){
-	
 	
 	switch(action.type){
 		

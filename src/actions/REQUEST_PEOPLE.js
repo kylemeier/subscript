@@ -1,6 +1,6 @@
-export const REQUEST_PEOPLE = 'REQUEST_PEOPLE'
+import {REQUEST_PEOPLE} from '../constants/ACTIONS_PEOPLE';
 
-export function requestPeople(query){
+export default function(query){
 	return {
 		type: REQUEST_PEOPLE,
 		query

@@ -1,9 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Person from '../components/Person';
-import fetchMovies from '../actions/fetchMovies';
+import selectPerson from '../actions/selectPerson';
+import './PeopleDropDown.css';
 
-class PeopleList extends React.Component{
+class PeopleDropDown extends React.Component{
 
 	constructor(props){
 		super(props);
@@ -12,30 +13,13 @@ class PeopleList extends React.Component{
 
 	handleClick(e, id){
 		e.preventDefault();
-		this.props.dispatch(fetchMovies(id));
-	}
-
-	componentWillReceiveProps(nextProps){
-		if(!nextProps.people.length || nextProps.people.length > 1) return;
-
-		const nextPersonID = nextProps.people[0].id;
-
-		let currentPersonID;
-
-		try{
-			currentPersonID = this.props.people[0].id;
-		}
-		catch(e){
-			currentPersonID = null;
-		}
-
-		if(nextPersonID !== currentPersonID) this.props.dispatch(fetchMovies(nextPersonID));
+		this.props.dispatch(selectPerson(id));
 	}
 
 	render(){
 		if(this.props.people.length > 1){
 			return(
-				<ul>
+				<ul className="PeopleDropDown">
 					{this.props.people.map(person=>
 						<Person
 							key={person.id}
@@ -60,4 +44,4 @@ const mapStateToProps = ({people})=>{
 	};
 };
 	
-export default connect(mapStateToProps)(PeopleList);
+export default connect(mapStateToProps)(PeopleDropDown);

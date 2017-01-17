@@ -1,7 +1,7 @@
-import {requestPeople} from './REQUEST_PEOPLE'
-import {receivePeople} from './RECEIVE_PEOPLE'
+import requestPeople from './REQUEST_PEOPLE';
+import receivePeople from './RECEIVE_PEOPLE';
 
-export function fetchPeople(query){
+export default function fetchPeople(query){
 	return (dispatch)=>{
 
 		dispatch(requestPeople(query))

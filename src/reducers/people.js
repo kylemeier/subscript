@@ -1,6 +1,4 @@
-import { REQUEST_PEOPLE } from '../actions/REQUEST_PEOPLE';
-import { RECEIVE_PEOPLE } from '../actions/RECEIVE_PEOPLE';
-
+import * as ACTIONS from '../constants/ACTIONS_PEOPLE';
 
 export default function(
 	state = {
@@ -11,18 +9,23 @@ export default function(
 
 	switch(action.type){
 
-		case REQUEST_PEOPLE:
+		case ACTIONS.REQUEST_PEOPLE:
 			return Object.assign({}, state, {
 				isFetching: true,
 				didInvalidate: false
-			})
-		case RECEIVE_PEOPLE:
+			});
+		case ACTIONS.RECEIVE_PEOPLE:
 			return Object.assign({}, state, {
 				isFetching: false,
 				didInvalidate: false,
 				items: action.people,
+				selectedPersonID: action.people.length === 1? action.people[0].id : null,
 				lastUpdated: action.receivedAt
-			})
+			});
+		case ACTIONS.SELECT_PERSON:
+			return Object.assign({}, state, {
+				selectedPersonID: action.personID
+			});
 		default:
 			return state;
 	}

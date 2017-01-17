@@ -1,6 +1,6 @@
-export const RECEIVE_PEOPLE = 'RECEIVE_PEOPLE'
+import {RECEIVE_PEOPLE} from '../constants/ACTIONS_PEOPLE';
 
-export function receivePeople(query, json){
+export default function(query, json){
 	
 	return {
 		query,
