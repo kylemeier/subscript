@@ -1,6 +1,15 @@
 .Person{
-	margin: 8px;
-	color:#FFF;
+  display: flex;
+	flex-direction: row;
+	color:#000;
+  background:#FFF;
+  justify-content: space-between;
+  padding: 0 8px;
+  width: 100%;
+}
+
+.Person:hover{
+  background: #E5E5E5;
 }
 
 .Person-name{

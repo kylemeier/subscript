@@ -1,5 +1,6 @@
 .PeopleDropDown{
-	display: flex;
-	flex-direction: column;
 	background: #F4F1DE;
+	max-width: 500px;
+	max-height: 500px;
+	overflow-y: scroll;
 }

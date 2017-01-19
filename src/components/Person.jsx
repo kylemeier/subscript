@@ -20,12 +20,12 @@ class Person extends React.Component{
 		
 		return(
 			<button className="Person" onClick={this.handleClick}>
-			{/*<PersonImage imagePath={profilePath} />*/}
+			<PersonImage imagePath={profilePath} />
 			<h1 className="Person-name">{name}</h1>
+			
 			</button>
 		);
 	}
 }
-
 
 export default connect()(Person);

@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import fetchPeople from '../actions/fetchPeople';
 import fetchMovies from '../actions/fetchMovies';
+import PeopleDropDown from './PeopleDropDown';
 import './FindPersonForm.css';
 
 class FindPersonForm extends React.Component{
@@ -10,14 +11,14 @@ class FindPersonForm extends React.Component{
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.shouldFocusInput = true;
+		this.prevInputValue = '';
 	}
-
-	handleSubmit(e){
-		e.preventDefault();
-		if(!this.input.value.trim()) return;
-		this.props.dispatch(fetchPeople(this.input.value));
-		//not working
-		this.shouldFocusInput = false;
+	
+	componentDidMount(){
+		//should be debounced
+		// const interval = setInterval(()=>{
+		// 	this.fetchPeopleFromInput();
+		// }, 3000);
 	}
 
 	componentWillReceiveProps(nextProps){
@@ -26,22 +27,36 @@ class FindPersonForm extends React.Component{
 		if(nextSelectedPersonID && nextSelectedPersonID !== currentSelectedPersonID) 
 			this.props.dispatch(fetchMovies(nextSelectedPersonID));
 	}
-	
+
+	handleSubmit(e){
+		e.preventDefault();
+		this.fetchPeopleFromInput();
+	}
+
+	fetchPeopleFromInput(){
+		const newInputValue = this.input.value.trim();
+
+		if(!newInputValue || this.prevInputValue === newInputValue) return;
+
+		this.props.dispatch(fetchPeople(newInputValue));
+		this.prevInputValue = newInputValue;
+	}
+
 	render(){
 		return(
 			<form onSubmit={this.handleSubmit} className="FindPersonForm">
-			<h1 className="FindPersonForm-title">Welcome to Subscript</h1>
-			<div className="FindPersonForm-inputContainer">
-				<input 
-					className="FindPersonForm-input"
-					placeholder="Search for a movie cast/crew member..."
-					autoFocus={this.shouldFocusInput}
-					ref={ node=>{ this.input = node }}
-				/>
+				<div className="FindPersonForm-inputContainer">
+					<input 
+						className="FindPersonForm-input"
+						placeholder="Search for a movie cast/crew member..."
+						autoFocus={this.shouldFocusInput}
+						ref={ node=>{ this.input = node }}
+					/>
 					<button className="FindPersonForm-btn" type="submit">
 						<i className="material-icons">search</i>
-					</button>
+					</button>	
 				</div>
+				<PeopleDropDown />
 			</form>
 		);
 	}
@@ -50,7 +65,6 @@ class FindPersonForm extends React.Component{
 const mapStateToProps = ({people})=>{
 	return{
 		selectedPersonID: people.selectedPersonID,
-		// people: people.items
 	};
 };
 
