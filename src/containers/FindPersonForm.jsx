@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import fetchPeople from '../actions/fetchPeople';
 import fetchMovies from '../actions/fetchMovies';
-import PeopleDropDown from './PeopleDropDown';
+import selectPerson from '../actions/selectPerson';
+import PeopleDropDown from '../components/PeopleDropDown';
 import './FindPersonForm.css';
 import '../utils/material-icons-overrides.css';
 
@@ -11,11 +12,14 @@ class FindPersonForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			shouldShowDropDown: true
+			isInputFocused: null
 		};
+
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handlePersonSelected = this.handlePersonSelected.bind(this);
 		this.handleInputFocus = this.handleInputFocus.bind(this);
 		this.handleInputBlur = this.handleInputBlur.bind(this);
+		this.dropDownShouldShow = this.dropDownShouldShow.bind(this);
 		this.prevInputValue = '';
 	}
 
@@ -36,19 +40,27 @@ class FindPersonForm extends React.Component {
 
 	handleInputFocus() {
 		this.setState({
-			shouldShowDropDown: true
+			isInputFocused: true
 		});
 	}
 
 	handleInputBlur() {
 		this.setState({
-			shouldShowDropDown: false
+			isInputFocused: false
 		});
 	}
 
-	handleSubmit(e) {
+	handleSubmit(e, id) {
 		e.preventDefault();
 		this.fetchPeopleFromInput();
+	}
+
+	handlePersonSelected(e, id) {
+		this.props.dispatch(selectPerson(id));
+	}
+
+	dropDownShouldShow() {
+		return this.state.isInputFocused && this.props.people.length > 1;
 	}
 
 	fetchPeopleFromInput() {
@@ -62,7 +74,6 @@ class FindPersonForm extends React.Component {
 
 	render() {
 		return (
-
 			<form onSubmit={this.handleSubmit} className="FindPersonForm">
 				<div className="FindPersonForm-inputContainer">
 					<div className="FindPersonForm-inputDropDownContainer">
@@ -71,9 +82,15 @@ class FindPersonForm extends React.Component {
 							placeholder="Search for a movie cast/crew member..."
 							onFocus={this.handleInputFocus}
 							onBlur={this.handleInputBlur}
+							autoFocus
 							ref={node => { this.input = node } }
 							/>
-						{ this.state.shouldShowDropDown && <PeopleDropDown /> }
+						{this.dropDownShouldShow() &&
+							<PeopleDropDown
+								handleClick={this.handlePersonSelected}
+								people={this.props.people}
+							/>
+						}
 					</div>
 					<button className="FindPersonForm-btn" type="submit">
 						<i className="material-icons km-material-icons--flex">search</i>
@@ -87,6 +104,7 @@ class FindPersonForm extends React.Component {
 const mapStateToProps = ({people}) => {
 	return {
 		selectedPersonID: people.selectedPersonID,
+		people: people.items
 	};
 };
 
