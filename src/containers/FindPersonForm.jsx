@@ -84,7 +84,7 @@ class FindPersonForm extends React.Component {
 							onBlur={this.handleInputBlur}
 							autoFocus
 							ref={node => { this.input = node } }
-							/>
+						/>
 						{this.dropDownShouldShow() &&
 							<PeopleDropDown
 								handleClick={this.handlePersonSelected}
@@ -107,7 +107,6 @@ const mapStateToProps = ({people}) => {
 		people: people.items
 	};
 };
-
 
 export default connect(mapStateToProps)(FindPersonForm);
 

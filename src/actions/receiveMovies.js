@@ -1,7 +1,6 @@
 import moment from 'moment';
 import {curry} from 'lodash/fp';
-
-const RECEIVE_MOVIES = 'RECEIVE_MOVIES';
+import { RECEIVE_MOVIES } from '../constants/ACTIONS_MOVIES';
 
 function receiveMovies(query, json){
 
@@ -60,4 +59,4 @@ function combineAPropValue(newObj, result, prop){
 		return result;
 }
 
-export {RECEIVE_MOVIES, receiveMovies};
+export default receiveMovies;

@@ -1,5 +1,4 @@
-import {REQUEST_MOVIES} from '../actions/REQUEST_MOVIES';
-import {RECEIVE_MOVIES} from '../actions/RECEIVE_MOVIES';
+import * as ACTIONS from '../constants/ACTIONS_MOVIES';
 import {REQUEST_PEOPLE} from '../constants/ACTIONS_PEOPLE';
 
 
@@ -12,12 +11,12 @@ export default function(
 	
 	switch(action.type){
 		
-		case REQUEST_MOVIES:
+		case ACTIONS.REQUEST_MOVIES:
 			return Object.assign({}, state, {
 				isFetching: true,
 				didInvalidate: false
 			})
-		case RECEIVE_MOVIES:
+		case ACTIONS.RECEIVE_MOVIES:
 			return Object.assign({}, state, {
 				isFetching: false,
 				didInvalidate: false,

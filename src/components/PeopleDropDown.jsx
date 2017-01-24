@@ -15,7 +15,7 @@ function PeopleDropDown(props) {
 					name={person.name}
 					profilePath={person.profile_path}
 					handleClick={handleClick}
-					/>
+				/>
 			)}
 		</ul>
 	);

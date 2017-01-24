@@ -17,6 +17,8 @@ class Person extends React.Component {
 		const {name, profilePath} = this.props;
 
 		return (
+			// onMouseDown rather than onClick to ensure it emits 
+			// before anything that would remove this element (like onBlur)
 			<button className="Person" onMouseDown={this.handleClick}>
 				<PersonImage imagePath={profilePath} />
 				<h1 className="Person-name">{name}</h1>

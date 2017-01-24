@@ -1,5 +1,5 @@
-import {receiveMovies} from './RECEIVE_MOVIES';
-import {RECEIVE_MOVIES} from './RECEIVE_MOVIES';
+import { receiveMovies } from './receiveMovies';
+import { RECEIVE_MOVIES } from '../constants/ACTIONS_MOVIES';
 import moment from 'moment';
 
 const data = {
@@ -7,7 +7,7 @@ const data = {
 	crew: []
 };
 
-it('only returns movies released in the last two months from cast property', ()=>{
+it('only returns movies released in the last two months from cast property', () => {
 
 	const recentDate = moment();
 	recentDate.subtract(2, 'months').add(1, 'day');
@@ -23,7 +23,7 @@ it('only returns movies released in the last two months from cast property', ()=
 	};
 
 	data.cast = [recent, old];
-	
+
 	const actualResult = receiveMovies('query', data);
 	const expectedResult = {
 		query: 'query',
@@ -35,7 +35,7 @@ it('only returns movies released in the last two months from cast property', ()=
 	expect(actualResult).toEqual(expectedResult);
 });
 
-it('returns movies from both cast and crew properties', ()=>{
+it('returns movies from both cast and crew properties', () => {
 
 	const date = moment();
 
@@ -51,7 +51,7 @@ it('returns movies from both cast and crew properties', ()=>{
 
 	data.cast = [cast];
 	data.crew = [crew];
-	
+
 	const actualResult = receiveMovies('query', data);
 	const expectedResult = {
 		query: 'query',
@@ -63,8 +63,8 @@ it('returns movies from both cast and crew properties', ()=>{
 	expect(actualResult).toEqual(expectedResult);
 });
 
-it('combines duplicate movies into a single movie', ()=>{
-	
+it('combines duplicate movies into a single movie', () => {
+
 	const date = moment();
 	const formattedDate = date.format('YYYY-MM-DD');
 
@@ -92,9 +92,9 @@ it('combines duplicate movies into a single movie', ()=>{
 		release_date: formattedDate
 	};
 
-	data.crew = [director,writer];
+	data.crew = [director, writer];
 	data.cast = [mainDude, alterEgo];
-	
+
 	const actualResult = receiveMovies('query', data);
 
 	const expectedMovie = {

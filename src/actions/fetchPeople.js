@@ -1,5 +1,5 @@
-import requestPeople from './REQUEST_PEOPLE';
-import receivePeople from './RECEIVE_PEOPLE';
+import requestPeople from './requestPeople';
+import receivePeople from './receivePeople';
 
 export default function fetchPeople(query){
 	return (dispatch)=>{
