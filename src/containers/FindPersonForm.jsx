@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { debounce, throttle } from 'lodash';
 import fetchPeople from '../actions/fetchPeople';
 import fetchMovies from '../actions/fetchMovies';
 import selectPerson from '../actions/selectPerson';
@@ -20,15 +21,8 @@ class FindPersonForm extends React.Component {
 		this.handleInputFocus = this.handleInputFocus.bind(this);
 		this.handleInputBlur = this.handleInputBlur.bind(this);
 		this.dropDownShouldShow = this.dropDownShouldShow.bind(this);
+		this.fetchPeopleFromInput = this.fetchPeopleFromInput.bind(this);
 		this.prevInputValue = '';
-	}
-
-	componentDidMount() {
-		//should be debounced?
-		// throttle every half second?
-		// const interval = setInterval(()=>{
-		// 	this.fetchPeopleFromInput();
-		// }, 1000);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -60,10 +54,13 @@ class FindPersonForm extends React.Component {
 	}
 
 	dropDownShouldShow() {
-		return this.state.isInputFocused && this.props.people.length > 1;
+		return this.state.isInputFocused &&
+			this.props.people.length > 1 &&
+			this.input.value.trim().length > 0;
 	}
 
 	fetchPeopleFromInput() {
+		console.log('fetching', Date.now());
 		const newInputValue = this.input.value.trim();
 
 		if (!newInputValue || this.prevInputValue === newInputValue) return;
@@ -82,18 +79,19 @@ class FindPersonForm extends React.Component {
 							placeholder="Search for a movie cast/crew member..."
 							onFocus={this.handleInputFocus}
 							onBlur={this.handleInputBlur}
+							onKeyDown={debounce(this.fetchPeopleFromInput, 500, { maxWait: 1000 })}
 							autoFocus
 							ref={node => { this.input = node } }
-						/>
+							/>
 						{this.dropDownShouldShow() &&
 							<PeopleDropDown
 								handleClick={this.handlePersonSelected}
 								people={this.props.people}
-							/>
+								/>
 						}
 					</div>
 					<button className="FindPersonForm-btn" type="submit">
-						<i className="material-icons km-material-icons--flex">search</i>
+						<i className="material-icons flex">search</i>
 					</button>
 				</div>
 			</form>
