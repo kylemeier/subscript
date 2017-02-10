@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { debounce, throttle } from 'lodash';
+import { debounce } from 'lodash';
 import fetchPeople from '../actions/fetchPeople';
 import fetchMovies from '../actions/fetchMovies';
 import selectPerson from '../actions/selectPerson';
 import PeopleDropDown from '../components/PeopleDropDown';
 import './FindPersonForm.css';
-import '../utils/material-icons-overrides.css';
+import '../utils/layout.css';
 
 class FindPersonForm extends React.Component {
 
