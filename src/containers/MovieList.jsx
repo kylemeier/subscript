@@ -16,13 +16,13 @@ let MovieList = ({movies})=>{
 			)}
 		</ul>
 	);
-}
+};
 
 const mapStateToProps = ({movies})=>{
 	return{
 		movies: movies.items
 	};
-}
+};
 
 MovieList = connect(mapStateToProps)(MovieList);
 

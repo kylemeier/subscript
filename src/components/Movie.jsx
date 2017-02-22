@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 function Movie(props){
 	const {title, poster, character, job} = props;
@@ -17,5 +17,12 @@ function Movie(props){
 		</div>
 	);
 }
+
+Movie.propTypes = {
+	title: PropTypes.string,
+	poster: PropTypes.string,
+	character: PropTypes.string,
+	job: PropTypes.string,
+};
 
 export default Movie;

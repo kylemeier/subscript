@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import './Person.css';
 import PersonImage from './PersonImage';
 
@@ -25,6 +25,11 @@ class Person extends React.Component {
 			</button>
 		);
 	}
-}
+};
+
+Person.propTypes = {
+	name: PropTypes.string,
+	profilePath: PropTypes.string
+};
 
 export default Person;

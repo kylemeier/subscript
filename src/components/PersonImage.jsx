@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import './PersonImage.css';
 
 function PersonImage(props){
@@ -20,5 +20,9 @@ function PersonImage(props){
 
 	return(el);
 }
+
+PersonImage.propTypes = {
+	imagePath: PropTypes.string
+};
 
 export default PersonImage;

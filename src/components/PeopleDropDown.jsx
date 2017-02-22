@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import Person from './Person';
 import './PeopleDropDown.css';
 
@@ -20,5 +20,11 @@ function PeopleDropDown(props) {
 		</ul>
 	);
 }
+
+PeopleDropDown.propTypes = {
+	people: PropTypes.array.isRequired,
+	handleClick: PropTypes.func.isRequired,
+};
+
 
 export default PeopleDropDown;
