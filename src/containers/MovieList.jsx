@@ -1,29 +1,30 @@
-import React from 'react';
-import {connect} from 'react-redux';
+import React, { PropTypes } from 'react';
 import Movie from '../components/Movie';
 
-let MovieList = ({movies})=>{
-	console.log(movies);
-	return(
-		<ul>
-			{movies.map(movie=>
-				<Movie
-					key={movie.id}		
-					title={movie.title}
-					character={movie.character}
-					job={movie.job}
-					poster={movie.poster_path} />
-			)}
-		</ul>
+function MovieList(props) {
+
+	const {movies, title} = props;
+
+	return (
+		<div>
+			<p>{title}</p>
+			<ul>
+				{movies.map(movie =>
+					<Movie
+						key={movie.id}
+						title={movie.title}
+						character={movie.character}
+						job={movie.job}
+						poster={movie.poster_path} />
+				)}
+			</ul>
+		</div>
 	);
 };
 
-const mapStateToProps = ({movies})=>{
-	return{
-		movies: movies.items
-	};
+MovieList.propTypes = {
+	movies: PropTypes.array,
+	title: PropTypes.string.isRequired
 };
-
-MovieList = connect(mapStateToProps)(MovieList);
 
 export default MovieList;

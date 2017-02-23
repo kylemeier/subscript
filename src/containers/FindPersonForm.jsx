@@ -81,13 +81,13 @@ class FindPersonForm extends React.Component {
 							onBlur={this.handleInputBlur}
 							onKeyDown={debounce(this.fetchPeopleFromInput, 500, { maxWait: 1000 })}
 							autoFocus
-							ref={node => { this.input = node } }
-							/>
+							ref={node => { this.input = node }}
+						/>
 						{this.dropDownShouldShow() &&
 							<PeopleDropDown
 								handleClick={this.handlePersonSelected}
 								people={this.props.people}
-								/>
+							/>
 						}
 					</div>
 					<button className="FindPersonForm-btn" type="submit">

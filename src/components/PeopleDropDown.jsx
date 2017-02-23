@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import Person from './Person';
 import './PeopleDropDown.css';
 
