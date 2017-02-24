@@ -26,8 +26,8 @@ class FindPersonForm extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		const nextSelectedPersonID = nextProps.selectedPersonID;
-		const currentSelectedPersonID = this.props.selectedPersonID || null;
+		const nextSelectedPersonID = nextProps.selectedPerson.id;
+		const currentSelectedPersonID = this.props.selectedPerson.id || null;
 		if (nextSelectedPersonID && nextSelectedPersonID !== currentSelectedPersonID)
 			this.props.dispatch(fetchMovies(nextSelectedPersonID));
 	}
@@ -60,11 +60,11 @@ class FindPersonForm extends React.Component {
 	}
 
 	fetchPeopleFromInput() {
-		console.log('fetching', Date.now());
+		
 		const newInputValue = this.input.value.trim();
 
 		if (!newInputValue || this.prevInputValue === newInputValue) return;
-
+		console.log('fetching', newInputValue, 'at', Date.now());
 		this.props.dispatch(fetchPeople(newInputValue));
 		this.prevInputValue = newInputValue;
 	}
@@ -76,7 +76,7 @@ class FindPersonForm extends React.Component {
 					<div className="FindPersonForm-inputDropDownContainer">
 						<input
 							className="FindPersonForm-input"
-							placeholder="Search for a movie cast/crew member..."
+							placeholder="Enter a movie cast/crew member..."
 							onFocus={this.handleInputFocus}
 							onBlur={this.handleInputBlur}
 							onKeyDown={debounce(this.fetchPeopleFromInput, 500, { maxWait: 1000 })}
@@ -90,9 +90,9 @@ class FindPersonForm extends React.Component {
 							/>
 						}
 					</div>
-					<button className="FindPersonForm-btn" type="submit">
+					{/*<button className="FindPersonForm-btn" type="submit">
 						<i className="material-icons flex">search</i>
-					</button>
+					</button>*/}
 				</div>
 			</form>
 		);
@@ -101,7 +101,7 @@ class FindPersonForm extends React.Component {
 
 const mapStateToProps = ({people}) => {
 	return {
-		selectedPersonID: people.selectedPersonID,
+		selectedPerson: people.selectedPerson,
 		people: people.items
 	};
 };

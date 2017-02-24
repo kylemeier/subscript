@@ -10,17 +10,17 @@ class Person extends React.Component {
 	}
 
 	handleClick(e) {
-		this.props.handleClick(e, this.props.id);
+		this.props.handleClick(e, this.props.person);
 	}
 
 	render() {
-		const {name, profilePath} = this.props;
+		const {name, profile_path} = this.props.person;
 
 		return (
 			// onMouseDown rather than onClick to ensure it emits 
 			// before anything that would remove this element (like onBlur)
 			<button className="Person" onMouseDown={this.handleClick}>
-				<PersonImage imagePath={profilePath} />
+				<PersonImage imagePath={profile_path} />
 				<h1 className="Person-name">{name}</h1>
 			</button>
 		);
@@ -28,8 +28,7 @@ class Person extends React.Component {
 };
 
 Person.propTypes = {
-	name: PropTypes.string,
-	profilePath: PropTypes.string
+	person: PropTypes.object.isRequired
 };
 
 export default Person;

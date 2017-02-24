@@ -11,9 +11,7 @@ function PeopleDropDown(props) {
 			{people.map(person =>
 				<Person
 					key={person.id}
-					id={person.id}
-					name={person.name}
-					profilePath={person.profile_path}
+					person={person}
 					handleClick={handleClick}
 				/>
 			)}

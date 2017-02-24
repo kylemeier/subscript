@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 import MovieList from '../containers/MovieList';
 
@@ -12,31 +11,14 @@ class PersonCard extends React.Component {
   //   super(props);
   // }
 
-  componentWillUnmount(){
-    console.log('unmounting!');
-  }
-
   render() {
 
-    const {movies} = this.props;
-    // if (!movies.length) return null;
+    const {movies, person} = this.props;
 
     return (
-
-      <div>
-        <ReactCSSTransitionGroup
-          transitionName="PersonCard-slideUp"
-          transitionEnterTimeout={200}
-          transitionLeaveTimeout={200}
-          transitionAppear={true}
-          transitionAppearTimeout={200}
-        >
-          {movies.length && 
-          <div key="1" className="PersonCard">
-            <MovieList movies={movies} title="Current" />
-          </div>
-          }
-        </ReactCSSTransitionGroup>
+      <div className="PersonCard">
+          <p>{person.name}</p>
+          <MovieList movies={movies} title="Current" />
       </div>
     );
   }
@@ -44,13 +26,13 @@ class PersonCard extends React.Component {
 
 PersonCard.propTypes = {
   // show: PropTypes.bool.isRequired
-  movies: PropTypes.array.isRequired
+  movies: PropTypes.array.isRequired,
+  person: PropTypes.object.isRequired 
 };
 
-const mapStateToProps = ({movies}) => {
-  return {
-    movies: movies.items
-  };
+PersonCard.defaultProps = {
+  movies: [],
+  person: {}
 };
 
-export default connect(mapStateToProps)(PersonCard);
+export default PersonCard;

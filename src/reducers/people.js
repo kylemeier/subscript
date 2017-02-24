@@ -4,8 +4,11 @@ export default function(
 	state = {
 		isFetching: false,
 		didInvalidate: false,
-		items: []
+		items: [],
+		selectedPerson: {}
 	}, action){
+
+	console.log('people action', action);
 
 	switch(action.type){
 
@@ -19,12 +22,12 @@ export default function(
 				isFetching: false,
 				didInvalidate: false,
 				items: action.people,
-				selectedPersonID: action.people.length === 1? action.people[0].id : null,
+				selectedPerson: action.people.length === 1? action.people[0] : {},
 				lastUpdated: action.receivedAt
 			});
 		case ACTIONS.SELECT_PERSON:
 			return Object.assign({}, state, {
-				selectedPersonID: action.personID
+				selectedPerson: action.person
 			});
 		default:
 			return state;

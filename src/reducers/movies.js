@@ -9,8 +9,8 @@ export default function(
 		items: [],
 	}, action){
 	
+	console.log('movie action', action);
 	switch(action.type){
-		
 		case ACTIONS.REQUEST_MOVIES:
 			return Object.assign({}, state, {
 				isFetching: true,
@@ -23,13 +23,13 @@ export default function(
 				items: action.movies,
 				lastUpdated: action.receivedAt
 			})
-		case REQUEST_PEOPLE:
-			return Object.assign({},{
-				isFetching: false,
-				didInvalidate: false,
-				items: [],
-				lastUpdated: action.receivedAt
-			})
+		// case REQUEST_PEOPLE:
+		// 	return Object.assign({},{
+		// 		isFetching: false,
+		// 		didInvalidate: false,
+		// 		items: [],
+		// 		lastUpdated: action.receivedAt
+		// 	})
 		default:
 			return state;
 	}

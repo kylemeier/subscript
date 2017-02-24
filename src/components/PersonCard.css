@@ -1,8 +1,8 @@
 .PersonCard{
   background: #FFF;
-  border-radius: 4px;
+  border-radius: 4px 4px 0 0;
   position: absolute;
-  bottom: 8px;
+  bottom: 0px;
   left: 50%;
   transform: translate(-50%, 0);
   color: #000;
@@ -17,6 +17,15 @@
 }
 
 .PersonCard-slideUp-enter.PersonCard-slideUp-enter-active{
+  transform: translate(-50%, 0%);
+  transition: transform 200ms ease-out;
+}
+
+.PersonCard-slideUp-appear{
+  transform: translate(-50%, 100%);
+}
+
+.PersonCard-slideUp-appear.PersonCard-slideUp-appear-active{
   transform: translate(-50%, 0%);
   transition: transform 200ms ease-out;
 }
