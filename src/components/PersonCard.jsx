@@ -8,7 +8,7 @@ function PersonCard(props) {
 
   return (
     <div className="PersonCard">
-      <PersonImage imagePath={person.profile_path} />
+      <PersonImage imagePath={person.profile_path} size="100"/>
       <p>{person.name}</p>
       <MovieList movies={movies} title="Current" />
     </div>
