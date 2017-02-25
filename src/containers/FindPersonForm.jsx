@@ -54,6 +54,7 @@ class FindPersonForm extends React.Component {
 	}
 
 	dropDownShouldShow() {
+		// return true;
 		return this.state.isInputFocused &&
 			this.props.people.length > 1 &&
 			this.input.value.trim().length > 0;
@@ -90,9 +91,9 @@ class FindPersonForm extends React.Component {
 							/>
 						}
 					</div>
-					{/*<button className="FindPersonForm-btn" type="submit">
+					<button className="FindPersonForm-btn" type="submit">
 						<i className="material-icons flex">search</i>
-					</button>*/}
+					</button>
 				</div>
 			</form>
 		);

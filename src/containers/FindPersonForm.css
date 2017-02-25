@@ -1,25 +1,24 @@
 .FindPersonForm{
-	position: absolute;
-	/*height: 300px;*/
-	/*top: 50%;*/
-	left: 50%;
-	transform: translate(-50%, 0%);
 	box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
-	z-index: 2;
+	z-index: 1;
+	background: #fafafa;
+	width: 80%;
+  max-width: 600px;
 }
 
 .FindPersonForm-inputDropDownContainer{
-	width: 500px;
+	background: inherit;
+	flex: 1;
 }
 
 .FindPersonForm-inputContainer{
-	/*display: flex;*/
 	position: relative;
-	/*height: 50px;*/
+	background: inherit;
+	display: flex;
+	justify-content: flex-end;
 }
 
 .FindPersonForm-input{
-	/*border-radius: 4px 0 0 0;*/
 	border: 0;
 	outline: 0;
 	line-height: 15px;
@@ -27,20 +26,10 @@
 	position: relative;
 	text-indent: 8px;
 	width: 100%;
-	/*border-bottom: 1px solid #000;*/
-	/*height: 100%;*/
-	/*margin-left:8px;*/
+	background: inherit;
 }
 
-/*.FindPersonForm-input:focus{
-	outline-width: thin;
-	outline-color: #F2CC8F;
-	outline-offset: -1px;
-	outline-style: solid;
-}
-*/
 .FindPersonForm-btn{
-	border-radius: 0 4px 4px 0;
 	background: #F2CC8F;
 	color: #63474D;
 	padding: 0 4px;

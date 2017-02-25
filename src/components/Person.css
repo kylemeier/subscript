@@ -2,18 +2,27 @@
   display: flex;
 	flex-direction: row;
 	color:#212121;
-  background:#FFF;
-  /*justify-content: space-between;*/
+  background: inherit;
   align-items: center;
   padding: 8px;
   width: 100%;
-  border-bottom: solid 1px #F5F5F5;
+  /*border-bottom: solid 1px #EEEEEE;*/
 }
 
-.Person:hover{
-  background: #F5F5F5;
-}
 
 .Person-name{
 	font-size: 1em;
 }
+
+.Person:nth-child(odd){
+	background: #F5F5F5;
+}
+
+.Person:nth-child(even){
+	background: #EEE;
+}
+
+.Person:hover{
+  background: #E0E0E0;
+}
+

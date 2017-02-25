@@ -3,19 +3,22 @@ import './PersonImage.css';
 
 function PersonImage(props){
 	const {imagePath} = props;
-
+	const style = {
+		backgroundImage: 'url("https://image.tmdb.org/t/p/w45/'+imagePath+'")',
+	};
+console.log(style);
 	let el;
-
+// src={"https://image.tmdb.org/t/p/w45/"+imagePath} 
 		if(imagePath){
 			el = 
 			<img 
-				className="Person-image"
-				src={"https://image.tmdb.org/t/p/w45/"+imagePath} 
-				alt="Headshot" 
+				className="PersonImage"
+				style={style}
+				role="presentation"
 			/>;
 		}
 		else{
-			el = <i className="Person-image material-icons">person</i>;
+			el = <i className="PersonImage material-icons">person</i>;
 		}
 
 	return(el);
