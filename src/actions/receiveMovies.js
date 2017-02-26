@@ -1,5 +1,4 @@
 import moment from 'moment';
-import { curry } from 'lodash/fp';
 import { RECEIVE_MOVIES } from '../constants/ACTIONS_MOVIES';
 
 function receiveMovies(query, json) {
@@ -18,45 +17,40 @@ function getCurrentlyPlayingMovies(movies) {
 
 function IsReleasedRecently(movie) {
 	const currentDate = moment();
-	const cutoffDate = currentDate.clone().subtract(2, 'months');
+	const cutoffDate = currentDate.clone().subtract(3, 'months');
 	const releaseDate = moment(movie.release_date);
 	return cutoffDate.isSameOrBefore(releaseDate) && releaseDate.isSameOrBefore(currentDate);
 }
 
 function combineDuplicates(movies) {
 
-	const combineJobAndCharacterPropValues = curry(combinePropValues)(['job', 'character']);
-
 	return movies.reduce((result, movie) => {
 
-		const existingMovieIndex = result.findIndex(item => item.id === movie.id);
+		let existingMovieIndex = result.findIndex(item => item.id === movie.id);
 
-		if (existingMovieIndex === -1) {
-			result.push(movie);
-		}
-		else {
-			result[existingMovieIndex] = combineJobAndCharacterPropValues(
-				result[existingMovieIndex],
-				movie,
-			);
-		}
+		if (existingMovieIndex === -1) existingMovieIndex = result.push(movie) - 1;
+
+		result[existingMovieIndex] = combineCharacterAndJobValues(
+			result[existingMovieIndex],
+			movie,
+		);
 
 		return result;
 	}, []);
 }
 
+//adds a role property which is a string combining all characters/jobs
+function combineCharacterAndJobValues(currentObj, newObj) {
 
-function combinePropValues(propsToCombine, currentObj, newObj) {
-	const clone = Object.assign({}, currentObj);
-	const combineAPropValueWithNewObj = curry(combineAPropValue)(newObj);
-	return propsToCombine.reduce(combineAPropValueWithNewObj, clone);
-}
+	const clone = Object.assign({ role: '' }, currentObj);
 
-function combineAPropValue(newObj, result, prop) {
-	const currentValue = result[prop];
-	const newValue = newObj[prop];
-	if (newValue) result[prop] = currentValue ? currentValue + '/' + newValue : newValue;
-	return result;
+	if (clone.role.length) clone.role += '/';
+
+	clone.role += newObj.character || newObj.job || '';
+	delete clone.character;
+	delete clone.job;
+
+	return clone;
 }
 
 export default receiveMovies;

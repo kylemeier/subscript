@@ -1,4 +1,4 @@
-import { receiveMovies } from './receiveMovies';
+import receiveMovies from './receiveMovies';
 import { RECEIVE_MOVIES } from '../constants/ACTIONS_MOVIES';
 import moment from 'moment';
 
@@ -7,19 +7,21 @@ const data = {
 	crew: []
 };
 
-it('only returns movies released in the last two months from cast property', () => {
+it('only returns movies released in the last three months from cast property', () => {
 
 	const recentDate = moment();
-	recentDate.subtract(2, 'months').add(1, 'day');
+	recentDate.subtract(3, 'months').add(1, 'day');
 
 	const recent = {
 		id: 'recent',
-		release_date: recentDate.format('YYYY-MM-DD')
+		release_date: recentDate.format('YYYY-MM-DD'),
+		role: ''
 	};
 
 	const old = {
 		id: 'old',
-		release_date: '1970-01-01'
+		release_date: '1970-01-01',
+		role: ''
 	};
 
 	data.cast = [recent, old];
@@ -41,12 +43,14 @@ it('returns movies from both cast and crew properties', () => {
 
 	const cast = {
 		id: 'cast',
-		release_date: date.format('YYYY-MM-DD')
+		release_date: date.format('YYYY-MM-DD'),
+		role: ''
 	};
 
 	const crew = {
 		id: 'crew',
-		release_date: date.format('YYYY-MM-DD')
+		release_date: date.format('YYYY-MM-DD'),
+		role: ''
 	};
 
 	data.cast = [cast];
@@ -99,8 +103,7 @@ it('combines duplicate movies into a single movie', () => {
 
 	const expectedMovie = {
 		id: 1,
-		job: 'Director/Writer',
-		character: 'Main Dude/Alter ego',
+		role: 'Main Dude/Alter ego/Director/Writer',
 		release_date: formattedDate
 	};
 
