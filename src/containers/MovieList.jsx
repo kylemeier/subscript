@@ -13,8 +13,7 @@ function MovieList(props) {
 					<Movie
 						key={movie.id}
 						title={movie.title}
-						character={movie.character}
-						job={movie.job}
+						role={movie.role}
 						poster={movie.poster_path} />
 				)}
 			</ul>
