@@ -4,12 +4,16 @@ import './PersonImage.css';
 function PersonImage(props) {
 	const {imagePath, size} = props;
 
-	const width = size > 45? 185 : 45; //these two numbers are the two widths allowed by the API
+	const backgroundImageWidth = size > 45? 185 : 45; //these two numbers are the two widths allowed by the API
 
-	const style = {
-		backgroundImage: 'url("https://image.tmdb.org/t/p/w'+width+'/' + imagePath + '")',
+	const imgStyle = {
 		width: size+'px',
-		height: size+'px'
+		height: size+'px',
+		backgroundImage: 'url("https://image.tmdb.org/t/p/w'+backgroundImageWidth+'/' + imagePath + '")',
+	};
+
+	const iconStyle = {
+		fontSize: size+'px'
 	};
 
 	let el;
@@ -18,12 +22,12 @@ function PersonImage(props) {
 		el =
 			<img
 				className="PersonImage"
-				style={style}
+				style={imgStyle}
 				role="presentation"
 			/>;
 	}
 	else {
-		el = <i className="PersonImage material-icons">person</i>;
+		el = <i className="PersonImage material-icons" style={iconStyle}>person</i>;
 	}
 
 	return el;
