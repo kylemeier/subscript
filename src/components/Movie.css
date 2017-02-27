@@ -1,12 +1,27 @@
 .Movie{
-  
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .Movie-title{
-  
+  font-size: 1em;
+}
+
+.Movie-role{
+  font-size: 0.8em;
 }
 
 .Movie-poster{
-  height: 20px;
-  width: 20px;
+  width: 50px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.Movie-showtimeLink{
+  margin-left: auto;
+  font-size: 0.8em;
+  text-decoration: none;
+  font-weight: bold;
+  color: #0091EA;
 }

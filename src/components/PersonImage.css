@@ -1,16 +1,8 @@
 .PersonImage{
-	/*width: 45px;*/
-	/*height: 45px;*/
 	background-size: cover;
 	font-size: 45px;
 	margin-right: 8px;
 	border-radius: 50%;
   background-position: center;
 	background-color: #E0E0E0;
-}
-
-.PersonCard .PersonImage{
-	/*margin: 10px;*/
-	/*width: 90px;*/
-	/*height: 90px;*/
 }

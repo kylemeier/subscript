@@ -23,6 +23,18 @@ class FindPersonForm extends React.Component {
 		this.dropDownShouldShow = this.dropDownShouldShow.bind(this);
 		this.fetchPeopleFromInput = this.fetchPeopleFromInput.bind(this);
 		this.prevInputValue = '';
+
+		//auto show a card
+		setTimeout(() => {
+			this.props.dispatch(selectPerson({
+				id: 1032, //30614 gosling 1032 scorsese
+				known_for: [],
+				name: "Martin Scorsese",
+				profile_path: "/7ayyfofgSRB9kVV004EocFBC4zC.jpg"
+			}));
+		}, 100);
+
+
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -49,8 +61,8 @@ class FindPersonForm extends React.Component {
 		this.fetchPeopleFromInput();
 	}
 
-	handlePersonSelected(e, id) {
-		this.props.dispatch(selectPerson(id));
+	handlePersonSelected(e, person) {
+		this.props.dispatch(selectPerson(person));
 	}
 
 	dropDownShouldShow() {
@@ -61,7 +73,7 @@ class FindPersonForm extends React.Component {
 	}
 
 	fetchPeopleFromInput() {
-		
+
 		const newInputValue = this.input.value.trim();
 
 		if (!newInputValue || this.prevInputValue === newInputValue) return;
@@ -71,6 +83,7 @@ class FindPersonForm extends React.Component {
 	}
 
 	render() {
+
 		return (
 			<form onSubmit={this.handleSubmit} className="FindPersonForm">
 				<div className="FindPersonForm-inputContainer">

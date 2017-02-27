@@ -8,6 +8,7 @@ import './PersonCardWrapper.css';
 class PersonCardWrapper extends React.Component {
 
   render(){
+    
     if(!this.props.movies.length) return null;
       const {movies, selectedPerson} = this.props;
       //use an array to allow cards to switch out rather than replace the contents
@@ -26,10 +27,10 @@ class PersonCardWrapper extends React.Component {
         <div className="PersonCardWrapper">
           <ReactCSSTransitionGroup
             transitionName="PersonCard-slideUp"
-            transitionEnterTimeout={200}
-            transitionLeaveTimeout={200}
             transitionAppear={true}
-            transitionAppearTimeout={200}
+            transitionAppearTimeout={300}
+            transitionEnterTimeout={300}
+            transitionLeaveTimeout={200}
           >
             {cards}
           </ReactCSSTransitionGroup>

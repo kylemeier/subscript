@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react';
 import Movie from '../components/Movie';
 
+import './MovieList.css';
+
 function MovieList(props) {
 
 	const {movies, title} = props;
 
 	return (
-		<div>
+		<div className="MovieList">
 			<p>{title}</p>
 			<ul>
 				{movies.map(movie =>
