@@ -43,13 +43,15 @@ function combineDuplicates(movies) {
 function combineCharacterAndJobValues(currentObj, newObj) {
 
 	const clone = Object.assign({ role: '' }, currentObj);
+	const roleToAdd = newObj.character || newObj.job;
 
-	if (clone.role.length) clone.role += '/';
+	if (clone.role.length && roleToAdd) clone.role += '/';
 
-	clone.role += newObj.character || newObj.job || '';
+	clone.role += roleToAdd || '';
+
 	delete clone.character;
 	delete clone.job;
-
+	if (!clone.role.length) delete clone.role;
 	return clone;
 }
 

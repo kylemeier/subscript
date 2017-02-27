@@ -15,18 +15,18 @@ it('only returns movies released in the last three months from cast property', (
 	const recent = {
 		id: 'recent',
 		release_date: recentDate.format('YYYY-MM-DD'),
-		role: ''
 	};
 
 	const old = {
 		id: 'old',
 		release_date: '1970-01-01',
-		role: ''
 	};
+
 
 	data.cast = [recent, old];
 
 	const actualResult = receiveMovies('query', data);
+
 	const expectedResult = {
 		query: 'query',
 		type: RECEIVE_MOVIES,
@@ -44,19 +44,18 @@ it('returns movies from both cast and crew properties', () => {
 	const cast = {
 		id: 'cast',
 		release_date: date.format('YYYY-MM-DD'),
-		role: ''
 	};
 
 	const crew = {
 		id: 'crew',
 		release_date: date.format('YYYY-MM-DD'),
-		role: ''
 	};
 
 	data.cast = [cast];
 	data.crew = [crew];
 
 	const actualResult = receiveMovies('query', data);
+
 	const expectedResult = {
 		query: 'query',
 		type: RECEIVE_MOVIES,
