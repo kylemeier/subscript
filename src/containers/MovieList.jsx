@@ -21,7 +21,7 @@ function MovieList(props) {
 		</ul>;
 	}
 	else{
-		moviesToShow = <p>No {title.toLowerCase()} movies found.</p>;
+		moviesToShow = <p>None found.</p>;
 	}
 
 	return (
