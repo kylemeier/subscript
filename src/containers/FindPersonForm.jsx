@@ -77,7 +77,7 @@ class FindPersonForm extends React.Component {
 		const newInputValue = this.input.value.trim();
 
 		if (!newInputValue || this.prevInputValue === newInputValue) return;
-		console.log('fetching', newInputValue, 'at', Date.now());
+
 		this.props.dispatch(fetchPeople(newInputValue));
 		this.prevInputValue = newInputValue;
 	}

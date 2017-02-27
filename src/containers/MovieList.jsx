@@ -7,18 +7,27 @@ function MovieList(props) {
 
 	const {movies, title} = props;
 
+	let moviesToShow;
+
+	if(movies.length){
+		moviesToShow = <ul>
+			{movies.map(movie =>
+				<Movie
+					key={movie.id}
+					title={movie.title}
+					role={movie.role}
+					poster={movie.poster_path} />
+			)}
+		</ul>;
+	}
+	else{
+		moviesToShow = <p>No {title.toLowerCase()} movies found.</p>;
+	}
+
 	return (
 		<div className="MovieList">
 			<p>{title}</p>
-			<ul>
-				{movies.map(movie =>
-					<Movie
-						key={movie.id}
-						title={movie.title}
-						role={movie.role}
-						poster={movie.poster_path} />
-				)}
-			</ul>
+			{moviesToShow}
 		</div>
 	);
 };

@@ -1,5 +1,7 @@
 import React, {PropTypes} from 'react';
 
+import PosterImage from './PosterImage';
+
 import './Movie.css';
 
 function Movie(props){
@@ -7,7 +9,7 @@ function Movie(props){
 
 	return(
 		<div className="Movie">
-			<img className="Movie-poster" src={"https://image.tmdb.org/t/p/w185/"+poster} alt="Poster"/>
+			<PosterImage poster={poster} />
 			<div className="Movie-titleAndRoleWrapper">
 				<h1 className="Movie-title">{title}</h1>
 				<h2 className="Movie-role" >Role: {role}</h2>
