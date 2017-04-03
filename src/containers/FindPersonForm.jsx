@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { debounce } from 'lodash';
-import fetchPeople from '../actions/fetchPeople';
 import { getPeople } from '../ducks/people';
 import fetchMovies from '../actions/fetchMovies';
 import selectPerson from '../actions/selectPerson';
