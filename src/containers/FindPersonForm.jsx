@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { debounce } from 'lodash';
 import fetchPeople from '../actions/fetchPeople';
+import { getPeople } from '../ducks/people';
 import fetchMovies from '../actions/fetchMovies';
 import selectPerson from '../actions/selectPerson';
 import PeopleDropDown from '../components/PeopleDropDown';
@@ -25,14 +26,14 @@ class FindPersonForm extends React.Component {
 		this.prevInputValue = '';
 
 		//auto show a card
-		setTimeout(() => {
-			this.props.dispatch(selectPerson({
-				id: 1032, //30614 gosling 1032 scorsese
-				known_for: [],
-				name: "Martin Scorsese",
-				profile_path: "/7ayyfofgSRB9kVV004EocFBC4zC.jpg"
-			}));
-		}, 100);
+		// setTimeout(() => {
+		// 	this.props.dispatch(selectPerson({
+		// 		id: 1032, //30614 gosling 1032 scorsese
+		// 		known_for: [],
+		// 		name: "Martin Scorsese",
+		// 		profile_path: "/7ayyfofgSRB9kVV004EocFBC4zC.jpg"
+		// 	}));
+		// }, 100);
 
 
 	}
@@ -78,7 +79,7 @@ class FindPersonForm extends React.Component {
 
 		if (!newInputValue || this.prevInputValue === newInputValue) return;
 
-		this.props.dispatch(fetchPeople(newInputValue));
+		this.props.dispatch(getPeople(newInputValue));
 		this.prevInputValue = newInputValue;
 	}
 
@@ -113,7 +114,7 @@ class FindPersonForm extends React.Component {
 	}
 };
 
-const mapStateToProps = ({people}) => {
+const mapStateToProps = ({ people }) => {
 	return {
 		selectedPerson: people.selectedPerson,
 		people: people.items

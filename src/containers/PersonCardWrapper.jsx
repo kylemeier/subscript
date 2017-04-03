@@ -2,10 +2,23 @@ import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { connect } from 'react-redux';
 
+import savePerson from '../actions/savePerson';
+
 import PersonCard from '../components/PersonCard';
 import './PersonCardWrapper.css';
 
 class PersonCardWrapper extends React.Component {
+  
+  constructor(props){
+    super(props);
+
+    this.handleSave = this.handleSave.bind(this);
+  }
+
+  handleSave(id){
+    console.log('handle save', id);
+    this.props.dispatch(savePerson(id));
+  }
 
   render(){
     const {movies, selectedPerson} = this.props;
@@ -18,6 +31,7 @@ class PersonCardWrapper extends React.Component {
         key={id} 
         person={selectedPerson} 
         movies={movies} 
+        handleSave={this.handleSave}
       />
     ));
     

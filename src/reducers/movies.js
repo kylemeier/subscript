@@ -9,7 +9,6 @@ export default function(
 		items: [],
 	}, action){
 	
-	console.log('movie action', action);
 	switch(action.type){
 		case ACTIONS.REQUEST_MOVIES:
 			return Object.assign({}, state, {

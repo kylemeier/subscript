@@ -5,6 +5,7 @@ import TopNav from '../containers/TopNav';
 import FindPersonForm from '../containers/FindPersonForm';
 import PersonCardWrapper from '../containers/PersonCardWrapper';
 import FindPersonFormAndResultsWrapper from '../components/FindPersonFormAndResultsWrapper';
+import SignInModal from '../containers/SignInModal';
 import './App.css';
 
 const App = () => (
