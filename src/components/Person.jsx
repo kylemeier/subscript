@@ -1,34 +1,26 @@
-import React, { PropTypes } from 'react';
-import './Person.css';
-import PersonImage from './PersonImage';
+import React from "react";
+import { connect } from "react-redux";
+import { selectPerson } from "../people/actions";
+import "./Person.css";
+import PersonImage from "./PersonImage";
 
 class Person extends React.Component {
+  handleClick = () => {
+    this.props.dispatch(selectPerson(this.props.person));
+  };
 
-	constructor(props) {
-		super(props);
-		this.handleClick = this.handleClick.bind(this);
-	}
+  render() {
+    const { name, profile_path } = this.props.person;
 
-	handleClick(e) {
-		this.props.handleClick(e, this.props.person);
-	}
+    return (
+      // onMouseDown rather than onClick to ensure it emits
+      // before anything that would remove this element (like onBlur)
+      <button className="Person" onMouseDown={this.handleClick}>
+        <PersonImage imagePath={profile_path} />
+        <h1 className="Person-name">{name}</h1>
+      </button>
+    );
+  }
+}
 
-	render() {
-		const {name, profile_path} = this.props.person;
-
-		return (
-			// onMouseDown rather than onClick to ensure it emits 
-			// before anything that would remove this element (like onBlur)
-			<button className="Person" onMouseDown={this.handleClick}>
-				<PersonImage imagePath={profile_path} />
-				<h1 className="Person-name">{name}</h1>
-			</button>
-		);
-	}
-};
-
-Person.propTypes = {
-	person: PropTypes.object.isRequired
-};
-
-export default Person;
+export default connect()(Person);
